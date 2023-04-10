@@ -1,9 +1,11 @@
+'use client'
+
 import React, {FC} from 'react';
 import Image from 'next/image'
 import {useRouter} from 'next/navigation'
 
 
-const Logo: FC = () => {
+const Logo  = () => {
     const router = useRouter()
 
     return (
@@ -11,8 +13,8 @@ const Logo: FC = () => {
             src='/images/logo.png'
             alt='Logo'
             className='hidden mb:black cursor-pointer'
-            height='100'
-            width='100'
+            height='50'
+            width='50'
         />
     );
 };

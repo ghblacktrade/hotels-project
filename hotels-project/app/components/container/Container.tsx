@@ -1,5 +1,8 @@
 import React, {FC} from 'react';
 import {IContainerProps} from "@/app/components/container/container.interface";
+import Logo from "@/app/components/navbar/Logo";
+
+
 
 
 const Container: React.FC<IContainerProps>= ({children}) => {
