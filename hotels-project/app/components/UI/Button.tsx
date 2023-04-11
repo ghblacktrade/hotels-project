@@ -18,7 +18,7 @@ const Button: React.FC<ButtonProps> = ({label, onClick, icon: Icon, disabled, ou
                        transition
                        w-full
                        ${outline ? 'bg-white' : 'bg-black'}
-                       ${outline ? 'border-black' : 'border-red-600'}
+                       ${outline ? 'border-black' : 'border-blue-300'}
                        ${outline ? 'text-black' : 'text-white'}
                        ${small ? 'py-1' : 'py-3'}
                        ${small ? 'text-sm' : 'text-md'}

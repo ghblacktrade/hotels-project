@@ -39,7 +39,7 @@ const Input: React.FC<InputProps> = ({
                            w-full
                            p-4
                            pt-6
-                           bg-black
+                           bg-white
                            border-2
                            rounded-md
                            outline-none
@@ -51,6 +51,23 @@ const Input: React.FC<InputProps> = ({
                            ${errors[id] ? 'focus:border-red-700' : 'focus:border-black'}
                            `}
             />
+            <label className={`
+            absolute
+            text-md
+            duration-150
+            transform
+            -translate-y-3
+            top-5
+            z-10
+            origin-[0]
+            ${formatPrice ? 'left-9' : 'left-4'}
+            peer-placeholder-show:scale-100
+            peer-placeholder-shown:translate-y-0
+            peer-focus:scale-75
+            peer-focus:-translate-y-4
+            `}>
+                {label}
+            </label>
 
         </div>
     );
