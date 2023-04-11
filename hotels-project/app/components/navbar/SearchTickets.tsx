@@ -1,8 +1,8 @@
-'use client'
 import React, {FC} from 'react';
-import { BiSearch } from 'react-icons/bi'
+import {BiSearch} from "react-icons/bi";
+import {AiFillHome, GiCommercialAirplane} from "react-icons/all";
 
-const Search: FC = () => {
+const SearchTickets: FC = () => {
     return (
         <div
             className='
@@ -28,7 +28,7 @@ const Search: FC = () => {
                 text-sm
                 px-6
                 '>
-                    Anywhere
+                    Where
                 </div>
                 <div className='
                 hidden
@@ -45,7 +45,7 @@ const Search: FC = () => {
                 text-sm
                 pl-6
                 pr-2
-                text-red-300
+                text-red-600
                 flex
                 flex-row
                 items-center
@@ -58,11 +58,20 @@ const Search: FC = () => {
                     </div>
                     <div className='
                     p-2
-                    bg-teal-800
+                    border-2
                     rounded-full
-                    text-white
+                    border-black
+                    text-black
                     '>
-                        <BiSearch size={18}/>
+                        <BiSearch size={13}/>
+                    </div>
+                    <div className='
+                    p-2
+
+                    rounded-full
+
+                    '>
+                        <GiCommercialAirplane  size={20}/>
                     </div>
 
                 </div>
@@ -72,4 +81,4 @@ const Search: FC = () => {
     );
 };
 
-export default Search;
+export default SearchTickets;
