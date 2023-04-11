@@ -2,6 +2,8 @@
 
 import React, {useCallback, useEffect, useState} from 'react';
 import {ModalProps} from "@/app/components/modals/modal.interface";
+import {AiFillCloseCircle} from "react-icons/all";
+import Button from "@/app/components/UI/Button";
 
 const Modal: React.FC<ModalProps> =
     ({
@@ -10,11 +12,12 @@ const Modal: React.FC<ModalProps> =
          onSubmit,
          disabled,
          title,
-         label,
+         actionLabel,
          footer,
          body,
          secondaryLabel,
-         secondaryAction
+         secondaryAction,
+         secondaryActionLabel
      }) => {
 
         const [showModal, setShowModal] = useState(isOpen)
@@ -41,11 +44,11 @@ const Modal: React.FC<ModalProps> =
         }, [disabled, onSubmit])
 
         const handleSecondaryAction = useCallback(() => {
-            if (disabled || !secondaryAction) {
+            if (disabled || !secondaryActionLabel) {
                 return
             }
-            secondaryAction()
-        }, [disabled, secondaryAction])
+            secondaryActionLabel()
+        }, [disabled, secondaryActionLabel])
 
         if (!isOpen) {
             return null
@@ -67,13 +70,13 @@ const Modal: React.FC<ModalProps> =
                 bg-neutral-800/70
                 '>
                     <div
-                    className='
+                        className='
                     relative
                     w-full
                     md:w-4/6
                     lg:w-3/6
                     xl:w-2/5
-                    y-6
+                    my-6
                     mx-auto
                     h-full
                     lg:h-auto
@@ -85,7 +88,7 @@ const Modal: React.FC<ModalProps> =
                         duration-300
                         h-full
                         ${showModal ? 'translate-y-0' : 'translate-y-full'}
-                        ${showModal ? 'opacity-0' : 'opacity-0'}
+                        ${showModal ? 'opacity-100' : 'opacity-0'}
                         `}>
                             <div className='
                             translate
@@ -112,11 +115,48 @@ const Modal: React.FC<ModalProps> =
                                relative
                                border-b-[1px]
                                '>
-                                    <button>
-
+                                    <button onClick={handleClose}
+                                            className='
+                                               p-1
+                                               border-0
+                                               hover:opacity-50
+                                               transition
+                                               absolute
+                                               left-9
+                                    '>
+                                        <AiFillCloseCircle size={20}/>
                                     </button>
+                                    <div>
+                                        {title}
+                                    </div>
                                 </div>
+                                <div className='relative p-6 flex-auto'>
+                                    {body}
+                                </div>
+                                <div className='flex flex-col gap-2 p-6'>
+                                    <div className='
+                                    flex
+                                    flex-row
+                                    items-center
+                                    gap-4
+                                    w-full
+                                    '>
+                                        {secondaryAction && secondaryActionLabel && (
 
+                                        <Button
+                                            outline
+                                            disabled={disabled}
+                                            label={secondaryActionLabel}
+                                            onClick={handleSecondaryAction}
+                                        />
+                                        )}
+                                        <Button
+                                            disabled={disabled}
+                                            label={actionLabel}
+                                            onClick={handleSubmit}
+                                        />
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
