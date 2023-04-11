@@ -3,8 +3,8 @@ import './globals.css'
 import React from "react";
 import Navbar from "@/app/components/navbar/Navbar";
 import ClientOnly from "@/app/components/client/ClientOnly";
-import Modal from "@/app/components/modals/Modal";
 import RegisterModal from "@/app/components/modals/RegisterModal";
+import ToasterProvider from "@/app/providers/ToasterProvider";
 
 export const metadata = {
     title: 'Hotels',
@@ -24,6 +24,7 @@ export default function RootLayout({
         <html lang="en">
         <body className={font.className}>
         <ClientOnly>
+            <ToasterProvider />
             <RegisterModal />
             <Navbar/>
         </ClientOnly>

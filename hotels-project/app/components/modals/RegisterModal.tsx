@@ -7,6 +7,7 @@ import axios from "axios";
 import Modal from "@/app/components/modals/Modal";
 import Heading from "@/app/components/navbar/Heading";
 import Input from "@/app/components/UI/Input";
+import toast from "react-hot-toast";
 
 const RegisterModal = ( ) => {
 
@@ -35,7 +36,7 @@ const RegisterModal = ( ) => {
             registerModal.onClose()
         })
             .catch((error) => {
-                console.log(error)
+                toast.error('Something Wrong!')
             })
             .finally(() => {
                 setIsLoading(false)
@@ -49,8 +50,23 @@ const RegisterModal = ( ) => {
             subtitle='Create a new account!'
             />
             <Input
+            id='name'
+            label='Name'
+            disabled={isLoading}
+            register={register}
+            errors={errors}
+            required
+            />    <Input
             id='email'
             label='Email'
+            disabled={isLoading}
+            register={register}
+            errors={errors}
+            required
+            />    <Input
+            id='password'
+            type='password'
+            label='Password'
             disabled={isLoading}
             register={register}
             errors={errors}
