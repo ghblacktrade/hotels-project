@@ -60,7 +60,7 @@ const Modal: React.FC<ModalProps> =
                 overflow-x-hidden
                 overflow-y-auto
                 fixed
-                insert-0
+                inset-0
                 z-50
                 outline-none
                 focus:outline-none
