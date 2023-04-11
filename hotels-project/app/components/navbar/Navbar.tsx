@@ -3,6 +3,7 @@
 import React, {FC} from 'react';
 import Container from "@/app/components/container/Container";
 import Logo from "@/app/components/navbar/Logo";
+import Search from "@/app/components/navbar/Search";
 
 
 const Navbar = () => {
@@ -12,6 +13,7 @@ const Navbar = () => {
             <Container>
                 <div className='flex flex-row items-center justify-between z-50 gap-3 md:gap-0'>
                     <Logo />
+                    <Search />
                 </div>
             </Container>
             </div>

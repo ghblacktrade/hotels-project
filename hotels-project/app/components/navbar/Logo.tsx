@@ -12,7 +12,7 @@ const Logo  = () => {
         <Image
             src='/images/logo.png'
             alt='Logo'
-            className='hidden mb:black cursor-pointer'
+            className='mb:black cursor-pointer'
             height='50'
             width='50'
         />
