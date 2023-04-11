@@ -41,14 +41,13 @@ const UserMenu = () => {
                 md:w-3/4
                 bg-white
                 overflow-hidden
-                right-0
+
                 top-12
                 text-sm
-
                 '>
                     <div className='flex flex-col cursor-pointer'>
                         <>
-                            <MenuItem label='login' onClick={() => {}}/>
+                            <MenuItem label='Login' onClick={() => {}}/>
                             <MenuItem label='Sign Up' onClick={() => {}}/>
                         </>
                     </div>
