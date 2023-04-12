@@ -142,7 +142,6 @@ const Modal: React.FC<ModalProps> =
                                     w-full
                                     '>
                                         {secondaryAction && secondaryActionLabel && (
-
                                         <Button
                                             outline
                                             disabled={disabled}

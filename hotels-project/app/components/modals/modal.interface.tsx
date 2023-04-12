@@ -8,9 +8,9 @@ export interface ModalProps {
     title?: string
     body?: React.ReactElement
     footer?: React.ReactElement
-    label: string
+    actionLabel: string
     disabled?: boolean
     secondaryAction?: () => void
     secondaryLabel?: string
-
+    secondaryActionLabel?: string
 }
