@@ -1,11 +1,8 @@
 import {create} from "zustand";
+import {RegisterModalStore} from "@/app/hooks/registerModal.inteface";
 
 
-interface RegisterModalStore {
-    isOpen: boolean
-    onOpen: () => void
-    onClose: () => void
-}
+
 
 const useRegisterModal = create<RegisterModalStore>((set) => ({
     isOpen: false,
