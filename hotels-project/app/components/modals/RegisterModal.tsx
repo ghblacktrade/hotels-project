@@ -58,22 +58,24 @@ const RegisterModal = () => {
                 register={register}
                 errors={errors}
                 required
-            /> <Input
-            id='email'
-            label='Email'
-            disabled={isLoading}
-            register={register}
-            errors={errors}
-            required
-        /> <Input
-            id='password'
-            type='password'
-            label='Password'
-            disabled={isLoading}
-            register={register}
-            errors={errors}
-            required
-        />
+            />
+            <Input
+                id='email'
+                label='Email'
+                disabled={isLoading}
+                register={register}
+                errors={errors}
+                required
+            />
+            <Input
+                id='password'
+                type='password'
+                label='Password'
+                disabled={isLoading}
+                register={register}
+                errors={errors}
+                required
+            />
         </div>
     )
 
@@ -86,13 +88,14 @@ const RegisterModal = () => {
                 icon={FcGoogle}
                 onClick={() => {
                 }}
-            /> <Button
-            outline
-            label='Continue with Telegram'
-            icon={FaTelegram}
-            onClick={() => {
-            }}
-        />
+            />
+            <Button
+                outline
+                label='Continue with Telegram'
+                icon={FaTelegram}
+                onClick={() => {
+                }}
+            />
             <div className='
             text-neutral-500
             text-center
