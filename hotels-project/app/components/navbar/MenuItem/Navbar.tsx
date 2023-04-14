@@ -6,15 +6,13 @@ import Logo from "@/app/components/navbar/Logo";
 import SearchHotels from "@/app/components/navbar/SearchHotels";
 import SearchTickets from "@/app/components/navbar/SearchTickets";
 import UserMenu from "@/app/components/navbar/UserMenu";
-import {User} from "@prisma/client";
+import {NavbarProps} from "@/app/components/navbar/MenuItem/navbar.interface";
 
 
 
-interface NavbarProps {
-    currentUser?: User | null
-}
 
 const Navbar :React.FC<NavbarProps> = ( { currentUser } ) => {
+
     return (
         <div className='fixed w-full bg-white z-10 shadow-sm'>
             <div className='py-4 border-b-[1px]'>
@@ -30,7 +28,7 @@ const Navbar :React.FC<NavbarProps> = ( { currentUser } ) => {
                         <Logo/>
                         <SearchHotels/>
                         <SearchTickets/>
-                        <UserMenu />
+                        <UserMenu currentUser={currentUser} />
                     </div>
                 </Container>
             </div>

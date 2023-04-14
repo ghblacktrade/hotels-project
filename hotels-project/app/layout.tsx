@@ -1,12 +1,14 @@
 import {Nunito} from 'next/font/google'
 import './globals.css'
 import React from "react";
-import Navbar from "@/app/components/navbar/Navbar";
+import Navbar from "@/app/components/navbar/MenuItem/Navbar";
 import ClientOnly from "@/app/components/client/ClientOnly";
 import RegisterModal from "@/app/components/modals/RegisterModal";
 import ToasterProvider from "@/app/providers/ToasterProvider";
 import LoginModal from "@/app/components/modals/LoginModal";
 import getCurrentUser from "@/app/actions/getCurrentUser";
+import {mockSession} from "next-auth/client/__tests__/helpers/mocks";
+import user = mockSession.user;
 
 export const metadata = {
     title: 'Hotels',
@@ -31,7 +33,7 @@ export default async function RootLayout({
             <ToasterProvider/>
             <LoginModal/>
             <RegisterModal/>
-            <Navbar/>
+            <Navbar currentUser={currentUser}/>
         </ClientOnly>
 
         {children}
