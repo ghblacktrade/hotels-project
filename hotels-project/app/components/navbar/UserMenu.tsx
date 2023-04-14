@@ -2,7 +2,7 @@
 
 import React, {useCallback, useState} from 'react';
 import {AiOutlineMenu} from "react-icons/all";
-import Avatar from "@/app/components/Avatar";
+import Avatar from "@/app/components/avatar/Avatar";
 import MenuItem from "@/app/components/navbar/MenuItem/MenuItem";
 import useRegisterModal from "@/app/hooks/useRegisterModal";
 import useLoginModal from "@/app/hooks/useLoginModal";
@@ -36,7 +36,7 @@ const UserMenu: React.FC<UserMenuProps> = ({currentUser}) => {
         '
         >
             <AiOutlineMenu/>
-            <Avatar/>
+            <Avatar src={currentUser?.image} />
             {isOpen && (
                 <div className='
                 absolute

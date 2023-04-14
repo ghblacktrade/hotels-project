@@ -1,5 +1,6 @@
 import {User} from "@prisma/client";
+import {SafeUser} from "@/app/types";
 
 export interface NavbarProps {
-    currentUser?: User | null
+    currentUser?: SafeUser | null
 }
