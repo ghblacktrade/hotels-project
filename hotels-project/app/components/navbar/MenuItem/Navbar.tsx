@@ -7,6 +7,7 @@ import SearchHotels from "@/app/components/navbar/SearchHotels";
 import SearchTickets from "@/app/components/navbar/SearchTickets";
 import UserMenu from "@/app/components/navbar/UserMenu";
 import {NavbarProps} from "@/app/components/navbar/MenuItem/navbar.interface";
+import Categories from "@/app/components/navbar/Categories";
 
 
 
@@ -32,6 +33,7 @@ const Navbar :React.FC<NavbarProps> = ( { currentUser } ) => {
                     </div>
                 </Container>
             </div>
+            <Categories />
         </div>
     );
 };

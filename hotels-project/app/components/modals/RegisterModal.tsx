@@ -10,6 +10,7 @@ import Input from "@/app/components/UI/Input";
 import toast from "react-hot-toast";
 import Button from "@/app/components/UI/Button";
 import {FaTelegram, FcGoogle} from "react-icons/all";
+import {signIn} from "next-auth/react";
 
 const RegisterModal = () => {
 
@@ -86,8 +87,7 @@ const RegisterModal = () => {
                 outline
                 label='Continue with Google'
                 icon={FcGoogle}
-                onClick={() => {
-                }}
+                onClick={() => signIn('google')}
             />
             <Button
                 outline
