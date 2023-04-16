@@ -1,3 +1,5 @@
+'use client'
+
 import Container from "@/app/components/container/Container";
 import {
     FaSkiing,

@@ -1,3 +1,5 @@
+'use client'
+
 import React, {useCallback} from 'react';
 import {CategoryBoxProps} from "@/app/components/categoryBox.interface";
 import {useRouter, useSearchParams} from "next/navigation";

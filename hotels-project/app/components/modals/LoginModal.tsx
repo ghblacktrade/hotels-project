@@ -1,9 +1,8 @@
 'use client'
 
 import useRegisterModal from "@/app/hooks/useRegisterModal";
-import {useState} from "react";
+import {useCallback, useState} from "react";
 import {FieldValues, SubmitHandler, useForm} from "react-hook-form";
-import axios from "axios";
 import Modal from "@/app/components/modals/Modal";
 import Heading from "@/app/components/navbar/Heading";
 import Input from "@/app/components/UI/Input";
@@ -12,7 +11,6 @@ import Button from "@/app/components/UI/Button";
 import {FaTelegram, FcGoogle} from "react-icons/all";
 import useLoginModal from "@/app/hooks/useLoginModal";
 import {signIn} from "next-auth/react";
-import {callback} from "next-auth/core/routes";
 import {useRouter} from "next/navigation";
 
 const LoginModal = () => {
@@ -37,24 +35,29 @@ const LoginModal = () => {
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         setIsLoading(true)
 
-       signIn('credentials', {
-           ...data,
-           redirect: false,
-       })
-           .then((callback) => {
-               setIsLoading(false)
+        signIn('credentials', {
+            ...data,
+            redirect: false,
+        })
+            .then((callback) => {
+                setIsLoading(false)
 
-               if (callback?.ok) {
-                   toast.success('Logged in')
-                   router.refresh()
-                   loginModal.onClose()
-               }
+                if (callback?.ok) {
+                    toast.success('Logged in')
+                    router.refresh()
+                    loginModal.onClose()
+                }
 
-               if (callback?.error) {
-                   toast.error(callback.error)
-               }
-           })
+                if (callback?.error) {
+                    toast.error(callback.error)
+                }
+            })
     }
+
+    const toggle = useCallback(() => {
+        loginModal.onClose()
+        registerModal.onOpen()
+    }, [loginModal, registerModal])
 
     const bodyContent = (
         <div className='flex flex-col gap-3'>
@@ -99,22 +102,22 @@ const LoginModal = () => {
                 }}
             />
             <div className='
-            text-neutral-500
-            text-center
-            mt-4
-            font-light
-            '>
+                           text-neutral-500
+                           text-center
+                           mt-4
+                           font-light
+                           '>
                 <div className='flex flex-row items-center gap-2'>
                     <div>
-                        Already have an account?
+                        First time?
                     </div>
-                    <div onClick={registerModal.onClose}
+                    <div onClick={toggle}
                          className='
-                    text-neutral-800
-                    cursor-pointer
-                    hover:underline
-                    '>
-                        Login In
+                                   text-neutral-800
+                                   cursor-pointer
+                                   hover:underline
+                                   '>
+                        Create an account!
                     </div>
                 </div>
             </div>
