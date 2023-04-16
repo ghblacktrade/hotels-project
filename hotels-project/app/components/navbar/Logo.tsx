@@ -10,6 +10,7 @@ const Logo  = () => {
 
     return (
         <Image
+            onCLick={() => router.push('/')}
             src='/images/logo.png'
             alt='Logo'
             className='mb:black cursor-pointer'
