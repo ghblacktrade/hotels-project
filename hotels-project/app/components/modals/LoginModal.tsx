@@ -17,6 +17,7 @@ const LoginModal = () => {
     const router = useRouter()
     const registerModal = useRegisterModal()
     const loginModal = useLoginModal()
+
     const [isLoading, setIsLoading] = useState(false)
 
     const {
@@ -55,14 +56,14 @@ const LoginModal = () => {
     }
 
     const toggle = useCallback(() => {
-        loginModal.onClose()
-        registerModal.onOpen()
+        loginModal.onClose();
+        registerModal.onOpen();
     }, [loginModal, registerModal])
 
     const bodyContent = (
         <div className='flex flex-col gap-3'>
             <Heading
-                title='Wlcoe back!'
+                title='Welcome back!'
                 subtitle='Login to your account!'
             />
             <Input

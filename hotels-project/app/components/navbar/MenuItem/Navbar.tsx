@@ -6,8 +6,10 @@ import Logo from "@/app/components/navbar/Logo";
 import SearchHotels from "@/app/components/navbar/SearchHotels";
 import SearchTickets from "@/app/components/navbar/SearchTickets";
 import UserMenu from "@/app/components/navbar/UserMenu";
-import {NavbarProps} from "@/app/components/navbar/MenuItem/navbar.interface";
 import Categories from "@/app/components/navbar/Categories";
+import {SafeUser} from "@/app/types";
+import {NavbarProps} from "@/app/components/navbar/MenuItem/navbar.interface";
+
 
 
 
