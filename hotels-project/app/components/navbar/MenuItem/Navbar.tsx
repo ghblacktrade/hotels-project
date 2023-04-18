@@ -9,6 +9,7 @@ import UserMenu from "@/app/components/navbar/UserMenu";
 import Categories from "@/app/components/navbar/Categories";
 import {SafeUser} from "@/app/types";
 import {NavbarProps} from "@/app/components/navbar/MenuItem/navbar.interface";
+import FlyMenu from "@/app/components/navbar/FlyMenu";
 
 
 
@@ -29,8 +30,9 @@ const Navbar :React.FC<NavbarProps> = ( { currentUser } ) => {
                                gap-2
                                md:gap-0'>
                         <Logo/>
-                        <SearchHotels/>
                         <SearchTickets/>
+                        <FlyMenu />
+                        <SearchHotels/>
                         <UserMenu currentUser={currentUser} />
                     </div>
                 </Container>

@@ -9,7 +9,8 @@ import LoginModal from "@/app/components/modals/LoginModal";
 import getCurrentUser from "@/app/actions/getCurrentUser";
 import {mockSession} from "next-auth/client/__tests__/helpers/mocks";
 import user = mockSession.user;
-import RentModal from "@/app/components/modals/RentModal";
+import RentHotelModal from "@/app/components/modals/RentHotelModal";
+import RentFlyModal from "@/app/components/modals/RentFlyModal";
 
 export const metadata = {
     title: 'Hotels',
@@ -33,7 +34,8 @@ export default async function RootLayout({
         <ClientOnly>
             <ToasterProvider/>
             <LoginModal/>
-            <RentModal />
+            <RentFlyModal />
+            <RentHotelModal />
             <RegisterModal/>
             <Navbar currentUser={currentUser}/>
         </ClientOnly>

@@ -1,6 +1,6 @@
 'use client'
 
-import useRentModal from "@/app/hooks/useRentModal";
+import useHotelRentModal from "@/app/hooks/useHotelRentModal";
 import {categories} from "@/app/components/navbar/Categories";
 import Modal from "@/app/components/modals/Modal";
 import {useMemo, useState} from "react";
@@ -20,8 +20,8 @@ enum STEPS {
     PRICE
 }
 
-const RentModal = () => {
-    const rentModal = useRentModal()
+const RentHotelModal = () => {
+    const rentHotelModal = useHotelRentModal()
 
     const [step, setStep] = useState(STEPS.CATEGORY)
 
@@ -134,8 +134,8 @@ const RentModal = () => {
 
     return (
         <Modal
-            isOpen={rentModal.isOpen}
-            onClose={rentModal.onClose}
+            isOpen={rentHotelModal.isOpen}
+            onClose={rentHotelModal.onClose}
             onSubmit={onNext}
             actionLabel={actionLabel}
             secondaryActionLabel={secondaryActionLabel}
@@ -147,4 +147,4 @@ const RentModal = () => {
 }
 
 
-export default RentModal
+export default RentHotelModal

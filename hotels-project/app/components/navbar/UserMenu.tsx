@@ -8,12 +8,12 @@ import useRegisterModal from "@/app/hooks/useRegisterModal";
 import useLoginModal from "@/app/hooks/useLoginModal";
 import {UserMenuProps} from "@/app/components/navbar/userMenu.interface";
 import {signOut} from "next-auth/react";
-import useRentModal from "@/app/hooks/useRentModal";
+import useHotelRentModal from "@/app/hooks/useHotelRentModal";
 
 const UserMenu: React.FC<UserMenuProps> = ({currentUser}) => {
-    const registerModal = useRegisterModal()
-    const loginModal = useLoginModal()
-    const rentModal = useRentModal()
+    const registerHotelModal = useRegisterModal()
+    const loginHotelModal = useLoginModal()
+    const rentHotelModal = useHotelRentModal()
 
     const [isOpen, setIsOpen] = useState(false)
 
@@ -21,36 +21,18 @@ const UserMenu: React.FC<UserMenuProps> = ({currentUser}) => {
         setIsOpen((value) => !value)
     }, [])
 
-    const onRent = useCallback(() => {
+    const onHotelRent = useCallback(() => {
         if (!currentUser) {
-            return loginModal.onOpen()
+            return loginHotelModal.onOpen()
         }
-
-        rentModal.onOpen()
-    }, [currentUser, loginModal, rentModal])
+        rentHotelModal.onOpen()
+    }, [currentUser, loginHotelModal, rentHotelModal])
 
     return (
         <div className='relative'>
-            <div
-                onClick={onRent}
-                className='
-                m-7
-                absolute
-                hidden
-                md:block
-                py-1
-                px-1
-                rounded-full
-                hover:bg-neutral-100
-                transition
-                cursor-pointer
-                '
-            >
-                Go Fly!
-            </div>
-            <div className='flex flex-row mb-2 gap-2'>
+            <div className='flex flex-row items-center gap-2'>
                 <div
-                    onClick={onRent}
+                    onClick={onHotelRent}
                     className='
                 hidden
                 md:block
@@ -96,41 +78,41 @@ const UserMenu: React.FC<UserMenuProps> = ({currentUser}) => {
                                top-12
                                text-sm
                                '>
-                            <div className='flex flex-col cursor-pointer'>
-                                {currentUser ? (
-                                    <>
-                                        <MenuItem
-                                            onClick={() => {
-                                            }}
-                                            label='My Trips'/>
-                                        <MenuItem
-                                            onClick={() => {
-                                            }}
-                                            label='My Favorites'/>
-                                        <MenuItem
-                                            onClick={() => {
-                                            }}
-                                            label='My reservations'/>
-                                        <MenuItem
-                                            onClick={() => {
-                                            }}
-                                            label='My flights'/>
-                                        <hr/>
-                                        <MenuItem
-                                            onClick={() => signOut()}
-                                            label={'Logout'}/>
-                                    </>
-                                ) : (
-                                    <>
-                                        <MenuItem
-                                            label='Login'
-                                            onClick={loginModal.onOpen}/>
-                                        <MenuItem
-                                            label='Sign Up'
-                                            onClick={registerModal.onOpen}/>
-                                    </>
-                                )}
-                            </div>
+                            {/*<div className='flex flex-col cursor-pointer'>*/}
+                            {/*    {currentUser ? (*/}
+                            {/*        <>*/}
+                            {/*            <MenuItem*/}
+                            {/*                onClick={() => {*/}
+                            {/*                }}*/}
+                            {/*                label='My Trips'/>*/}
+                            {/*            <MenuItem*/}
+                            {/*                onClick={() => {*/}
+                            {/*                }}*/}
+                            {/*                label='My Favorites'/>*/}
+                            {/*            <MenuItem*/}
+                            {/*                onClick={() => {*/}
+                            {/*                }}*/}
+                            {/*                label='My reservations'/>*/}
+                            {/*            <MenuItem*/}
+                            {/*                onClick={() => {*/}
+                            {/*                }}*/}
+                            {/*                label='My flights'/>*/}
+                            {/*            <hr/>*/}
+                            {/*            <MenuItem*/}
+                            {/*                onClick={() => signOut()}*/}
+                            {/*                label={'Logout'}/>*/}
+                            {/*        </>*/}
+                            {/*    ) : (*/}
+                            {/*        <>*/}
+                            {/*            <MenuItem*/}
+                            {/*                label='Login'*/}
+                            {/*                onClick={loginHotelModal.onOpen}/>*/}
+                            {/*            <MenuItem*/}
+                            {/*                label='Sign Up'*/}
+                            {/*                onClick={registerHotelModal.onOpen}/>*/}
+                            {/*        </>*/}
+                            {/*    )}*/}
+                            {/*</div>*/}
                         </div>
                     )}
                 </div>
