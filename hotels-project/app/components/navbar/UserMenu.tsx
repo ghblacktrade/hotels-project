@@ -31,13 +31,30 @@ const UserMenu: React.FC<UserMenuProps> = ({currentUser}) => {
 
     return (
         <div className='relative'>
-            <div className='flex flex-row items-center gap-3'>
+            <div
+                onClick={onRent}
+                className='
+                m-7
+                absolute
+                hidden
+                md:block
+                py-1
+                px-1
+                rounded-full
+                hover:bg-neutral-100
+                transition
+                cursor-pointer
+                '
+            >
+                Go Fly!
+            </div>
+            <div className='flex flex-row mb-2 gap-2'>
                 <div
                     onClick={onRent}
                     className='
                 hidden
                 md:block
-                py-3
+                py-1
                 px-4
                 rounded-full
                 hover:bg-neutral-100
@@ -45,7 +62,7 @@ const UserMenu: React.FC<UserMenuProps> = ({currentUser}) => {
                 cursor-pointer
                 '
                 >
-                     Go!
+                     Go Home!
                 </div>
 
 
