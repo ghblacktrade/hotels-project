@@ -1,7 +1,7 @@
 'use client'
 
 import useHotelRentModal from "@/app/hooks/useHotelRentModal";
-import {categories} from "@/app/components/navbar/Categories";
+import {categoriesHotels} from "@/app/components/navbar/CategoriesHotels";
 import Modal from "@/app/components/modals/Modal";
 import {useMemo, useState} from "react";
 import {FieldValues, useForm} from "react-hook-form";
@@ -23,7 +23,7 @@ enum STEPS {
 const RentHotelModal = () => {
     const rentHotelModal = useHotelRentModal()
 
-    const [step, setStep] = useState(STEPS.CATEGORY)
+    const [stepHotel, setStepHotel] = useState(STEPS.CATEGORY)
 
     const {
         register,
@@ -66,26 +66,26 @@ const RentHotelModal = () => {
     }
 
     const onBack = () => {
-        setStep((value) => value - 1)
+        setStepHotel((value) => value - 1)
     }
 
     const onNext = () => {
-        setStep((value) => value + 1)
+        setStepHotel((value) => value + 1)
     }
 
     const actionLabel = useMemo(() => {
-        if (step === STEPS.PRICE) {
+        if (stepHotel === STEPS.PRICE) {
             return 'Create'
         }
         return 'Next'
-    }, [step])
+    }, [stepHotel])
 
     const secondaryActionLabel = useMemo(() => {
-        if (step === STEPS.CATEGORY) {
+        if (stepHotel === STEPS.CATEGORY) {
             return undefined
         }
         return 'Back'
-    }, [step])
+    }, [stepHotel])
 
     let bodyContent = (
         <div className='flex flex-col gap-8'>
@@ -100,7 +100,7 @@ const RentHotelModal = () => {
                             max-h-[50vh]
                             overflow-y-auto
                             '>
-                {categories.map((item) => (
+                {categoriesHotels.map((item) => (
                     <div key={item.label} className='col-span-1'>
                         <CategoryInput
                             onClick={(category) =>
@@ -115,7 +115,7 @@ const RentHotelModal = () => {
         </div>
     )
 
-    if (step === STEPS.L0CATION) {
+    if (stepHotel === STEPS.L0CATION) {
         bodyContent = (
             <div className=' flex flex-col gap-8'>
                 <Heading
@@ -139,7 +139,7 @@ const RentHotelModal = () => {
             onSubmit={onNext}
             actionLabel={actionLabel}
             secondaryActionLabel={secondaryActionLabel}
-            secondaryAction={step === STEPS.CATEGORY ? undefined : onBack}
+            secondaryAction={stepHotel === STEPS.CATEGORY ? undefined : onBack}
             title='Go!'
             body={bodyContent}
         />

@@ -10,9 +10,10 @@ import {UserMenuProps} from "@/app/components/navbar/userMenu.interface";
 import {signOut} from "next-auth/react";
 import useHotelRentModal from "@/app/hooks/useHotelRentModal";
 
+
 const UserMenu: React.FC<UserMenuProps> = ({currentUser}) => {
-    const registerHotelModal = useRegisterModal()
-    const loginHotelModal = useLoginModal()
+    const registerModal = useRegisterModal()
+    const loginModal = useLoginModal()
     const rentHotelModal = useHotelRentModal()
 
     const [isOpen, setIsOpen] = useState(false)
@@ -23,10 +24,10 @@ const UserMenu: React.FC<UserMenuProps> = ({currentUser}) => {
 
     const onHotelRent = useCallback(() => {
         if (!currentUser) {
-            return loginHotelModal.onOpen()
+            return loginModal.onOpen()
         }
         rentHotelModal.onOpen()
-    }, [currentUser, loginHotelModal, rentHotelModal])
+    }, [currentUser, loginModal, rentHotelModal])
 
     return (
         <div className='relative'>
@@ -78,41 +79,42 @@ const UserMenu: React.FC<UserMenuProps> = ({currentUser}) => {
                                top-12
                                text-sm
                                '>
-                            {/*<div className='flex flex-col cursor-pointer'>*/}
-                            {/*    {currentUser ? (*/}
-                            {/*        <>*/}
-                            {/*            <MenuItem*/}
-                            {/*                onClick={() => {*/}
-                            {/*                }}*/}
-                            {/*                label='My Trips'/>*/}
-                            {/*            <MenuItem*/}
-                            {/*                onClick={() => {*/}
-                            {/*                }}*/}
-                            {/*                label='My Favorites'/>*/}
-                            {/*            <MenuItem*/}
-                            {/*                onClick={() => {*/}
-                            {/*                }}*/}
-                            {/*                label='My reservations'/>*/}
-                            {/*            <MenuItem*/}
-                            {/*                onClick={() => {*/}
-                            {/*                }}*/}
-                            {/*                label='My flights'/>*/}
-                            {/*            <hr/>*/}
-                            {/*            <MenuItem*/}
-                            {/*                onClick={() => signOut()}*/}
-                            {/*                label={'Logout'}/>*/}
-                            {/*        </>*/}
-                            {/*    ) : (*/}
-                            {/*        <>*/}
-                            {/*            <MenuItem*/}
-                            {/*                label='Login'*/}
-                            {/*                onClick={loginHotelModal.onOpen}/>*/}
-                            {/*            <MenuItem*/}
-                            {/*                label='Sign Up'*/}
-                            {/*                onClick={registerHotelModal.onOpen}/>*/}
-                            {/*        </>*/}
-                            {/*    )}*/}
-                            {/*</div>*/}
+                            <div className='flex flex-col cursor-pointer'>
+                                {currentUser ? (
+                                    <>
+                                        <MenuItem
+                                            onClick={() => {
+                                            }}
+                                            label='My Trips'/>
+                                        <MenuItem
+                                            onClick={() => {
+                                            }}
+                                            label='My Favorites'/>
+                                        <MenuItem
+                                            onClick={() => {
+                                            }}
+                                            label='My reservations'/>
+                                        <MenuItem
+                                            onClick={() => {
+                                            }}
+                                            label='My flights'/>
+                                        <hr/>
+                                        <MenuItem
+                                            onClick={() => signOut()}
+                                            label={'Logout'}/>
+                                    </>
+                                ) : (
+                                    <>
+                                        <MenuItem
+                                            label='Login'
+                                            onClick={loginModal.onOpen}/>
+                                        <MenuItem
+                                            label='Sign Up'
+                                            onClick={registerModal.onOpen}/>
+
+                                    </>
+                                )}
+                            </div>
                         </div>
                     )}
                 </div>

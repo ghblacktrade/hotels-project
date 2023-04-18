@@ -5,7 +5,7 @@ import {
     FaSkiing,
     GiBoatFishing,
     GiIsland,
-    GiWindmill, IoDiamond, IoDiamondSharp,
+    GiWindmill, IoDiamond,
     MdOutlineVilla,
     TbBeach,
     TbMountain,
@@ -16,7 +16,7 @@ import React from "react";
 import {usePathname, useSearchParams} from "next/navigation";
 
 
-export const categories = [
+export const categoriesHotels = [
     {
         label: 'Beach',
         icon: TbBeach,
@@ -63,7 +63,7 @@ export const categories = [
         description: 'This property is luxuries'
     },
 ]
-const Categories = () => {
+const CategoriesHotels = () => {
 
     const params = useSearchParams()
     const category = params?.get('category')
@@ -87,7 +87,7 @@ const Categories = () => {
               overflow-x-auto
             '
             >
-                {categories.map((item) => (
+                {categoriesHotels.map((item) => (
                     <CategoryBox
                       key={item.label}
                       label={item.label}
@@ -101,4 +101,4 @@ const Categories = () => {
     )
 }
 
-export default Categories
+export default CategoriesHotels

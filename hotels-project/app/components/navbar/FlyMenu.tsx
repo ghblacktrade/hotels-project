@@ -7,38 +7,35 @@ import useLoginModal from "@/app/hooks/useLoginModal";
 import useFlyRentModal from "@/app/hooks/useFlyRentModal";
 
 const UserMenu: React.FC<UserMenuProps> = ({currentUser}) => {
-    const registerFlyModal = useRegisterModal()
-    const loginFlyModal = useLoginModal()
+    const registerModal = useRegisterModal()
+    const loginModal = useLoginModal()
     const rentFlyModal = useFlyRentModal()
 
+
     const onFlyRent = useCallback(() => {
-        if (!currentUser) {
-            return loginFlyModal.onOpen()
-        }
         rentFlyModal.onOpen()
-    }, [currentUser, loginFlyModal, rentFlyModal])
+    }, [currentUser, loginModal, rentFlyModal])
 
     return (
 
-            <div className='flex flex-row items-center gap-2'>
-                <div
-                    onClick={onFlyRent}
-                    className='
+        <div className='flex flex-row items-center gap-2'>
+            <div
+                onClick={onFlyRent}
+                className='
+                  hidden
+                  md:block
+                  py-1
+                  px-4
+                  rounded-full
+                  hover:bg-neutral-100
+                  transition
+                  cursor-pointer
+                  '
+            >
+                Go Fly!
+            </div>
 
-                hidden
-                md:block
-                py-1
-                px-4
-                rounded-full
-                hover:bg-neutral-100
-                transition
-                cursor-pointer
-                '
-                >
-                    Go Fly!
-                </div>
-
-                        </div>
+        </div>
 
     );
 };
