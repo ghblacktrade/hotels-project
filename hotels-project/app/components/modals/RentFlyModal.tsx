@@ -10,11 +10,13 @@ import {FieldValues, useForm} from "react-hook-form";
 import Headless from "react-hot-toast/src/headless";
 import CountrySelect from "@/app/components/UI/CountrySelect";
 import Map from "@/app/components/Map";
+import Counter from "@/app/components/UI/Counter";
 
 
 enum STEPS {
     CATEGORY,
     LOCATION,
+    INFO,
     IMAGES,
     PRICE,
     DESCRIPTION,
@@ -39,7 +41,9 @@ const RentFlyModal = () => {
         defaultValues: {
             category: '',
             location: null,
-            passengerCount: 1,
+            adultCount: 1,
+            childrenCount: 1,
+            babyCount: 1,
             title: '',
             description: ''
         }
@@ -48,6 +52,9 @@ const RentFlyModal = () => {
 
     const category = watch('category')
     const location = watch('location')
+    const adultCount = watch('adultCount')
+    const childrenCount = watch('childrenCount')
+    const babyCount = watch('babyCount')
 
     const setCustomValue = (id: string, value: any) => {
         setValue(id, value, {
@@ -119,6 +126,43 @@ const RentFlyModal = () => {
                 center={location?.latlng}
                 />
             </div>
+        )
+    }
+
+    if (stepFly === STEPS.INFO) {
+        bodyContent = (
+            <div className='flex flex-col gap-8'>
+                <Heading
+                title='How many passengers?'
+                />
+                <hr/>
+                <Counter
+                    title='Adults'
+                    subtitle='over 12 years old'
+                    value={adultCount}
+                    onChange={(value) =>
+                        setCustomValue('adultCount', value)
+                }
+                />
+                <hr/>
+                <Counter
+                    title='Children'
+                    subtitle='from 2 to 12 years old'
+                    value={childrenCount}
+                    onChange={(value) =>
+                        setCustomValue('childrenCount', value)
+                }
+                />
+                <hr/>
+                <Counter
+                    title='Baby'
+                    subtitle='up to 2 years, without a place'
+                    value={babyCount}
+                    onChange={(value) =>
+                        setCustomValue('babyCount', value)
+                }
+                />
+             </div>
         )
     }
 
