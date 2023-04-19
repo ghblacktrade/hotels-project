@@ -10,14 +10,13 @@ import CategoryInput from "@/app/components/UI/CategoryInput";
 import CountrySelect from "@/app/components/UI/CountrySelect";
 import dynamic from "next/dynamic";
 import Counter from "@/app/components/UI/Counter";
+import Input from "@/app/components/UI/Input";
 
 
 enum STEPS {
     CATEGORY,
     L0CATION,
     INFO,
-    IMAGES,
-    DESCRIPTION,
     PRICE
 }
 
@@ -168,6 +167,26 @@ const RentHotelModal = () => {
                     onChange={(value) =>
                         setCustomValue('bathroomCount', value)
                 }
+                />
+            </div>
+        )
+    }
+
+    if(stepHotel === STEPS.PRICE) {
+        bodyContent = (
+            <div className='flex flex-col gap-8'>
+                <Heading
+                title='Now, set your price'
+                subtitle='How much do you charge per night?'
+                />
+                <Input
+                id='price'
+                label='Price'
+                formatPrice
+                type='number'
+                register={register}
+                errors={errors}
+                required
                 />
             </div>
         )
