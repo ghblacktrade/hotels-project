@@ -2,7 +2,8 @@
 
 import Container from "@/app/components/container/Container";
 import {
-    FaSkiing,
+    FaPassport,
+    FaSkiing, FiUserMinus,
     GiBoatFishing,
     GiIsland,
     GiWindmill, IoDiamond, IoDiamondSharp,
@@ -18,49 +19,14 @@ import {usePathname, useSearchParams} from "next/navigation";
 
 export const categoriesFly = [
     {
-        label: 'Beach',
-        icon: TbBeach,
-        description: 'This property is close to the beach!'
+        label: 'Visa',
+        icon: FaPassport,
+        description: 'Do you have visa?'
     },
     {
-        label: 'Windmills',
-        icon: GiWindmill,
-        description: 'This property hs windmills!'
-    },
-    {
-        label: 'Modern',
-        icon: MdOutlineVilla,
-        description: 'This property is modern!'
-    },
-    {
-        label: 'Countryside',
-        icon: TbMountain,
-        description: 'This property is in the countryside'
-    },
-    {
-        label: 'Pools',
-        icon: TbPool,
-        description: 'This property has a pool!'
-    },
-    {
-        label: 'IsIlands',
-        icon: GiIsland,
-        description: 'This property is on an island!'
-    },
-    {
-        label: 'Lake',
-        icon: GiBoatFishing,
-        description: 'This property is close to a lake!'
-    },
-    {
-        label: 'Skiing',
-        icon: FaSkiing,
-        description: 'This property has skiing activities!'
-    },
-    {
-        label: 'Lux',
-        icon: IoDiamond,
-        description: 'This property is luxuries'
+        label: 'WithoutVisa',
+        icon: FiUserMinus,
+        description: 'Without a visa'
     },
 ]
 const CategoriesFly = () => {

@@ -9,6 +9,7 @@ import Heading from "@/app/components/navbar/Heading";
 import CategoryInput from "@/app/components/UI/CategoryInput";
 import CountrySelect from "@/app/components/UI/CountrySelect";
 import dynamic from "next/dynamic";
+import Counter from "@/app/components/UI/Counter";
 
 
 enum STEPS {
@@ -50,6 +51,9 @@ const RentHotelModal = () => {
 
     const category = watch('category')
     const location = watch('location')
+    const guestCount = watch('guestCount')
+    const roomCount = watch('roomCount')
+    const bathroomCount = watch('bathroomCount')
 
     const Map = useMemo(() =>
         dynamic(() =>
@@ -127,6 +131,43 @@ const RentHotelModal = () => {
                 />
                 <Map
                     center={location?.latlng}
+                />
+            </div>
+        )
+    }
+
+    if (stepHotel === STEPS.INFO) {
+        bodyContent = (
+            <div className='flex flex-col gap-8'>
+                <Heading
+                title='Share some basics about your place'
+                subtitle='What amenities do you have?'
+                />
+                <hr />
+                <Counter
+                title='Guests'
+                subtitle='How many guests?'
+                value={guestCount}
+                onChange={(value) =>
+                    setCustomValue('guestCount', value)}
+                />
+                <hr/>
+                <Counter
+                    title='Rooms'
+                    subtitle='How many rooms do you have?'
+                    value={roomCount}
+                    onChange={(value) =>
+                        setCustomValue('roomCount', value)
+                }
+                />
+                <hr/>
+                <Counter
+                    title='bathrooms'
+                    subtitle='How many rooms do you have?'
+                    value={bathroomCount}
+                    onChange={(value) =>
+                        setCustomValue('bathroomCount', value)
+                }
                 />
             </div>
         )

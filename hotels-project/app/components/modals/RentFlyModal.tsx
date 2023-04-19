@@ -7,6 +7,9 @@ import Heading from "@/app/components/navbar/Heading";
 import {categoriesFly} from "@/app/components/navbar/CategoriesFly";
 import CategoryInput from "@/app/components/UI/CategoryInput";
 import {FieldValues, useForm} from "react-hook-form";
+import Headless from "react-hot-toast/src/headless";
+import CountrySelect from "@/app/components/UI/CountrySelect";
+import Map from "@/app/components/Map";
 
 
 enum STEPS {
@@ -37,7 +40,6 @@ const RentFlyModal = () => {
             category: '',
             location: null,
             passengerCount: 1,
-            price: 1,
             title: '',
             description: ''
         }
@@ -104,12 +106,30 @@ const RentFlyModal = () => {
         </div>
     )
 
+    if (stepFly === STEPS.LOCATION) {
+        bodyContent = (
+            <div className='flex flex-col gap-8'>
+                <Heading
+                title='Where is you rlace located?'
+                />
+                <CountrySelect value={location}
+                               onChange={(value) => setCustomValue('location', value)}
+                />
+                <Map
+                center={location?.latlng}
+                />
+            </div>
+        )
+    }
+
     return (
         <Modal
             isOpen={rentFlyModal.isOpen}
             onClose={rentFlyModal.onClose}
-            onSubmit={rentFlyModal.onClose}
-            actionLabel='Submit'
+            onSubmit={onNext}
+            actionLabel={actionLabel}
+            secondaryActionLabel={secondaryActionLabel}
+            secondaryAction={stepFly === STEPS.CATEGORY ? undefined : onBack}
             title='GO TO FLY!!!'
             body={bodyContent}
         />
