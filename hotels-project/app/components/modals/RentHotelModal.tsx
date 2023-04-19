@@ -4,13 +4,16 @@ import useHotelRentModal from "@/app/hooks/useHotelRentModal";
 import {categoriesHotels} from "@/app/components/navbar/CategoriesHotels";
 import Modal from "@/app/components/modals/Modal";
 import {useMemo, useState} from "react";
-import {FieldValues, useForm} from "react-hook-form";
+import {FieldValues, SubmitHandler, useForm} from "react-hook-form";
 import Heading from "@/app/components/navbar/Heading";
 import CategoryInput from "@/app/components/UI/CategoryInput";
 import CountrySelect from "@/app/components/UI/CountrySelect";
 import dynamic from "next/dynamic";
 import Counter from "@/app/components/UI/Counter";
 import Input from "@/app/components/UI/Input";
+import axios from "axios";
+import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 
 enum STEPS {
@@ -22,8 +25,10 @@ enum STEPS {
 
 const RentHotelModal = () => {
     const rentHotelModal = useHotelRentModal()
+    const router = useRouter()
 
     const [stepHotel, setStepHotel] = useState(STEPS.CATEGORY)
+    const [isLoading, setIsLoading] = useState(false)
 
     const {
         register,
@@ -76,6 +81,28 @@ const RentHotelModal = () => {
         setStepHotel((value) => value + 1)
     }
 
+    const onSubmit: SubmitHandler<FieldValues> = (data) => {
+        if (stepHotel !== STEPS.PRICE) {
+            return onNext()
+        }
+
+        setIsLoading(true)
+
+        axios.post('/api/listings', data)
+            .then(() => {
+                toast.success('Listing Created!')
+                router.refresh()
+                reset()
+                setStepHotel(STEPS.CATEGORY)
+                rentHotelModal.onClose()
+            })
+            .catch(() => {
+                toast.error('Something went wrong.')
+            }).finally(() => {
+                setIsLoading(false)
+        })
+    }
+
     const actionLabel = useMemo(() => {
         if (stepHotel === STEPS.PRICE) {
             return 'Create'
@@ -108,12 +135,15 @@ const RentHotelModal = () => {
                         <CategoryInput
                             onClick={(category) =>
                                 setCustomValue('category', category)}
+
                             selected={category === item.label}
                             label={item.label}
                             icon={item.icon}
+
+
                         />
                     </div>
-                ))}
+                    ))}
             </div>
         </div>
     )
@@ -184,6 +214,7 @@ const RentHotelModal = () => {
                 label='Price'
                 formatPrice
                 type='number'
+                disabled={isLoading}
                 register={register}
                 errors={errors}
                 required
@@ -196,7 +227,7 @@ const RentHotelModal = () => {
         <Modal
             isOpen={rentHotelModal.isOpen}
             onClose={rentHotelModal.onClose}
-            onSubmit={onNext}
+            onSubmit={handleSubmit(onSubmit)}
             actionLabel={actionLabel}
             secondaryActionLabel={secondaryActionLabel}
             secondaryAction={stepHotel === STEPS.CATEGORY ? undefined : onBack}

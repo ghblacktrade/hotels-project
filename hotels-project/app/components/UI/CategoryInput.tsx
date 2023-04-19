@@ -1,5 +1,5 @@
 'use client'
-
+import React from 'react';
 import {CategoryInputProps} from "@/app/components/UI/categoryInput.interface";
 
 const CategoryInput: React.FC<CategoryInputProps> = ({icon: Icon, label, selected, onClick}) => {
