@@ -11,6 +11,7 @@ import {mockSession} from "next-auth/client/__tests__/helpers/mocks";
 import user = mockSession.user;
 import RentHotelModal from "@/app/components/modals/RentHotelModal";
 import RentFlyModal from "@/app/components/modals/RentFlyModal";
+import Home from "@/app/page";
 
 export const metadata = {
     title: 'Hotels',
@@ -27,20 +28,22 @@ export default async function RootLayout({
     children: React.ReactNode
 }) {
 
-     const currentUser = await getCurrentUser();
+    const currentUser = await getCurrentUser();
     return (
         <html lang="en">
         <body className={font.className}>
         <ClientOnly>
             <ToasterProvider/>
             <LoginModal/>
-            <RentFlyModal />
-            <RentHotelModal />
+            <RentFlyModal/>
+            <RentHotelModal/>
             <RegisterModal/>
             <Navbar currentUser={currentUser}/>
+            <Home />
         </ClientOnly>
-
-        {children}
+        <div className='pb-20 pt-28'>
+            {children}
+        </div>
 
         </body>
 

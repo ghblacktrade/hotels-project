@@ -150,7 +150,7 @@ const RentHotelModal = () => {
 
     if (stepHotel === STEPS.L0CATION) {
         bodyContent = (
-            <div className=' flex flex-col gap-8'>
+            <div className='flex flex-col gap-8'>
                 <Heading
                     title='Where is your place located?'
                 />
@@ -222,6 +222,8 @@ const RentHotelModal = () => {
             </div>
         )
     }
+
+
 
     return (
         <Modal

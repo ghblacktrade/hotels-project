@@ -7,12 +7,14 @@ import SearchHotels from "@/app/components/navbar/SearchHotels";
 import SearchTickets from "@/app/components/navbar/SearchTickets";
 import UserMenu from "@/app/components/navbar/UserMenu";
 import Categories from "@/app/components/navbar/CategoriesHotels";
-import {SafeUser} from "@/app/types";
-import {NavbarProps} from "@/app/components/navbar/MenuItem/navbar.interface";
 import FlyMenu from "@/app/components/navbar/FlyMenu";
+import {SafeUser} from "@/app/types";
 
 
 
+interface NavbarProps {
+    currentUser?: SafeUser | null
+}
 
 
 const Navbar :React.FC<NavbarProps> = ( { currentUser } ) => {
@@ -31,7 +33,7 @@ const Navbar :React.FC<NavbarProps> = ( { currentUser } ) => {
                                md:gap-0'>
                         <Logo/>
                         <SearchTickets/>
-                        <FlyMenu />
+                        <FlyMenu currentUser={currentUser}/>
                         <SearchHotels/>
                         <UserMenu currentUser={currentUser} />
                     </div>
